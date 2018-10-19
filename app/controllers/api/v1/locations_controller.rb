@@ -16,6 +16,9 @@ class Api::V1::LocationsController < ApplicationController
 
   def create
     @location =  Location.new(location_params)
+    # t = Time.now
+    # @location.posted = t.to_f * 1000
+    # byebug;
     if @location.save
       render json: @location
     else
