@@ -16,13 +16,8 @@ class Api::V1::LocationsController < ApplicationController
 
   def create
     @location =  Location.new(location_params)
-    @location.user_id = location_params[:user_id]
-    @location.latitude = location_params[:latitude]
-    @location.longitude = location_params[:longitude]
-    @location.title = location_params[:title]
-    @location.description = location_params[:description]
     if @location.save
-      render json:@location
+      render json: @location
     else
       render json: { errors: @location.errors.full_messages }, status: :unprocessible_entity
     end
