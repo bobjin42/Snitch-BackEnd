@@ -16,22 +16,21 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user =  User.new(user_params)
-    @user.name = user_params[:name]
-    @user.username = user_params[:username]
-    @user.email = user_params[:email]
-    @user.password = user_params[:password]
     if @user.save
-      render json:@user
+      render json: @user
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessible_entity
     end
   end
+  # above, we don't want to return the entire user, just enough data for them to
+  # properly navigate the app
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password)
+    params.permit(:name, :username, :email, :password)
   end
+
 
 
 
