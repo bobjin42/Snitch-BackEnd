@@ -5,6 +5,11 @@ class Api::V1::LocationsController < ApplicationController
     render json: @locations
   end
 
+  def show
+    @location = Location.find(params[:id])
+    render json: @location.to_json(methods: [:location_data])
+  end
+
   def update
     @location.update(location_params)
     if @location.save

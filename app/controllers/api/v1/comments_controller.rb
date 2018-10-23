@@ -2,8 +2,9 @@ class Api::V1::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
-    render json: @comments
+    render json: @comments.to_json(methods: [:username])
   end
+
 
   def update
     @comment.update(comment_params)
