@@ -27,7 +27,7 @@ module Snitch
         origins '*'
         resource '*',
         :headers => :any,
-        :methods => [:get, :put, :patch, :options, :post]
+        :methods => [:get, :put, :patch, :options, :post, :delete]
       end
     end
 
